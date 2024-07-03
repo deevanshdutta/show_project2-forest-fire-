@@ -1,28 +1,89 @@
-
+<!DOCTYPE html>
 <html>
-   <body>
-       <div class="login">
-          <h1>FWI Prediction</h1>
-      
-           <!-- Main Input For Receiving Query to our ML -->
-          <form action="{{ url_for('predict_datapoint')}}" method="post">
+<head>
+    <style>
+        body {
+            background: url('https://lenews.ch/wp-content/uploads/2022/09/pexels-photo-2026454.jpeg') no-repeat center center fixed; /* URL to the forest image */
+            background-size: cover; /* Cover the entire background */
+            font-family: Arial, sans-serif; /* Font style */
+            color: #333; /* Dark grey text color */
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+            z-index: -1; /* Put it behind other elements */
+        }
+        .login {
+            width: 300px;
+            padding: 16px;
+            margin: 50px auto;
+            background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow */
+            text-align: center;
+            position: relative; /* Ensure it's above the overlay */
+            z-index: 1; /* Ensure it's above the overlay */
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: calc(100% - 22px); /* Full width minus padding */
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc; /* Light grey border */
+            border-radius: 5px; /* Rounded corners */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background: #007BFF; /* Blue background */
+            border: none;
+            border-radius: 5px; /* Rounded corners */
+            color: white; /* White text */
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #0056b3; /* Darker blue on hover */
+        }
+        h2 {
+            margin-top: 20px;
+        }
+        h3 {
+            margin-top: 20px; /* Add margin-top for spacing */
+            font-size: 14px;
+            color: #777; /* Grey text */
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="login">
+        <h1>FWI Prediction</h1>
+        <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('predict_datapoint')}}" method="post">
             <input type="text" name="Temperature" placeholder="Temperature" required="required" /><br>
-              <input type="text" name="RH" placeholder="RH" required="required" /><br>
-              <input type="text" name="Ws" placeholder="Ws" required="required" /><br>
-              <input type="text" name="Rain" placeholder="Rain" required="required" /><br>
-              <input type="text" name="FFMC" placeholder="FFMC" required="required" /><br>
-              <input type="text" name="DMC" placeholder="DMC" required="required" /><br>
-              <input type="text" name="ISI" placeholder="ISI" required="required" /><br>
-              <input type="text" name="Classes" placeholder="Classes" required="required" /><br>
-              <input type="text" name="Region" placeholder="Region" required="required" /><br>
-      
-      
-      
-              <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-          </form>
-       <h2>
-          THE FWI prediction is {{result}}
-       </h2>
-       <h3>made by~ deevansh dutta
-      <body>
-   </html>
+            <input type="text" name="RH" placeholder="RH" required="required" /><br>
+            <input type="text" name="Ws" placeholder="Ws" required="required" /><br>
+            <input type="text" name="Rain" placeholder="Rain" required="required" /><br>
+            <input type="text" name="FFMC" placeholder="FFMC" required="required" /><br>
+            <input type="text" name="DMC" placeholder="DMC" required="required" /><br>
+            <input type="text" name="ISI" placeholder="ISI" required="required" /><br>
+            <input type="text" name="Classes" placeholder="Classes" required="required" /><br>
+            <input type="text" name="Region" placeholder="Region" required="required" /><br>
+            <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+        </form>
+        <h2>
+            THE FWI prediction is {{result}}
+        </h2>
+        <h3>made by ~ Deevansh Dutta</h3>
+    </div>
+</body>
+</html>
